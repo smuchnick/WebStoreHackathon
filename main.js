@@ -49,23 +49,25 @@ for(var key in products){
 }
 
 
-var addToCarousel = function(array, divname){
+var addToCarousel = function(array, divname, itemname){
 	var random = Math.floor(Math.random() * array.length);
-	$(divname).html('<img src="' + array[random].picture_url + '">'
-	+ '<h1>' + array[random].name + '</h1>'
+	$(divname).html('<h1>Featured '+itemname+'</h1>'
+	+ '<img class="s-car-image" src="' + array[random].picture_url + '">'
+	+ '<h2>' + array[random].name + '</h2>'
 	+ '<h4>'+ array[random].desc +'</h4>'
 	)
 }
 
-addToCarousel(books, '#s-carbook');
-addToCarousel(albums, '#s-caralbum');
+addToCarousel(books, '#s-carbook', 'Book');
+addToCarousel(albums, '#s-caralbum', 'Album');
 
 var addToPage = function(item){
-	$('#s-main-container').append('<div class="block col-md-6 col-lg-4"><img class="left" src=' + item.picture_url + '>'
-		+ '<h3>' + item.name + '</h3>'
-		+ '<p>' + item.category + '</p>'
-		+ '<h4>' + item.price + '</h4>'
-		+ item.selling_points.join(', ')
+	$('#s-main-container').append('<div class="block col-md-6 col-lg-4 parentclass"><img class="left" src=' + item.picture_url + '>'
+		+ '<p class="titleclass">' + item.name + '</p>'
+		+ '<p class="genreclass">' + item.category + '</p>'
+		+ '<p class="priceclass">' + item.price + '</p><hr>'
+		+ '<p class="descclass">' + item.selling_points.join(', ') + '</p>'
+		+ '<button class="buttonclass btn-primary">Add to cart</button>'
 		+ '</div>'
 		);
 }
